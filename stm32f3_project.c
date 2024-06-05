@@ -110,12 +110,19 @@ int main(void)
   while (1)
   {
     HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_8);
+    HAL_Delay(500);
     HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_9);
+    HAL_Delay(500);
     HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_10);
+    HAL_Delay(500);
     HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_11);
+    HAL_Delay(500);
     HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_12);
+    HAL_Delay(500);
     HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_13);
+    HAL_Delay(500);
     HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_14);
+    HAL_Delay(500);
     HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_15);
     HAL_Delay(500); // 500 ms delay
     /* USER CODE END WHILE */
