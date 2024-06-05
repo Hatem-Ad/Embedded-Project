@@ -96,6 +96,18 @@ int main(void)
   {
     HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_9); // Adjust the pin based on your LED connection
     HAL_Delay(500); // 500 ms delay
+    HAL_GPIO_TogglePin(GPIOE, LD5_Pin);
+    HAL_Delay(500);
+    HAL_GPIO_TogglePin(GPIOE, LD7_Pin);
+    HAL_Delay(500);
+    HAL_GPIO_TogglePin(GPIOE, LD9_Pin);
+    HAL_Delay(500);
+    HAL_GPIO_TogglePin(GPIOE, LD10_Pin);
+    HAL_Delay(500);
+    HAL_GPIO_TogglePin(GPIOE, LD8_Pin);
+    HAL_Delay(500);
+    HAL_GPIO_TogglePin(GPIOE, LD6_Pin);
+    HAL_Delay(500);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -218,7 +230,7 @@ static void MX_SPI1_Init(void)
   hspi1.Instance = SPI1;
   hspi1.Init.Mode = SPI_MODE_MASTER;
   hspi1.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi1.Init.DataSize = SPI_DATASIZE_8BIT; // corrected to 8BIT
+  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
