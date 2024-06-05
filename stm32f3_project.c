@@ -46,7 +46,9 @@
 
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
+
 SPI_HandleTypeDef hspi1;
+
 PCD_HandleTypeDef hpcd_USB_FS;
 
 /* USER CODE BEGIN PV */
@@ -79,13 +81,26 @@ int main(void)
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
+
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
+
+  /* USER CODE BEGIN Init */
+
+  /* USER CODE END Init */
+
+  /* Configure the system clock */
   SystemClock_Config();
+
+  /* USER CODE BEGIN SysInit */
+
+  /* USER CODE END SysInit */
+
+  /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_I2C1_Init();
   MX_SPI1_Init();
   MX_USB_PCD_Init();
-
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -94,20 +109,15 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_9); // Adjust the pin based on your LED connection
+    HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_8);
+    HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_9);
+    HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_10);
+    HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_11);
+    HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_12);
+    HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_13);
+    HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_14);
+    HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_15);
     HAL_Delay(500); // 500 ms delay
-    HAL_GPIO_TogglePin(GPIOE, LD5_Pin);
-    HAL_Delay(500);
-    HAL_GPIO_TogglePin(GPIOE, LD7_Pin);
-    HAL_Delay(500);
-    HAL_GPIO_TogglePin(GPIOE, LD9_Pin);
-    HAL_Delay(500);
-    HAL_GPIO_TogglePin(GPIOE, LD10_Pin);
-    HAL_Delay(500);
-    HAL_GPIO_TogglePin(GPIOE, LD8_Pin);
-    HAL_Delay(500);
-    HAL_GPIO_TogglePin(GPIOE, LD6_Pin);
-    HAL_Delay(500);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -230,7 +240,7 @@ static void MX_SPI1_Init(void)
   hspi1.Instance = SPI1;
   hspi1.Init.Mode = SPI_MODE_MASTER;
   hspi1.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi1.Init.DataSize = SPI_DATASIZE_4BIT;
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
@@ -301,8 +311,9 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOE, CS_I2C_SPI_Pin|GPIO_PIN_9|LD5_Pin|LD7_Pin
-                          |LD9_Pin|LD10_Pin|LD8_Pin|LD6_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOE, CS_I2C_SPI_Pin|LD1_Pin|LD3_Pin|LD5_Pin
+                          |LD7_Pin|LD9_Pin|LD10_Pin|LD8_Pin
+                          |LD6_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : DRDY_Pin MEMS_INT3_Pin MEMS_INT4_Pin MEMS_INT1_Pin
                            MEMS_INT2_Pin */
@@ -312,10 +323,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : CS_I2C_SPI_Pin PE9 LD5_Pin LD7_Pin
-                           LD9_Pin LD10_Pin LD8_Pin LD6_Pin */
-  GPIO_InitStruct.Pin = CS_I2C_SPI_Pin|GPIO_PIN_9|LD5_Pin|LD7_Pin
-                          |LD9_Pin|LD10_Pin|LD8_Pin|LD6_Pin;
+  /*Configure GPIO pins : CS_I2C_SPI_Pin LD1_Pin LD3_Pin LD5_Pin
+                           LD7_Pin LD9_Pin LD10_Pin LD8_Pin
+                           LD6_Pin */
+  GPIO_InitStruct.Pin = CS_I2C_SPI_Pin|LD1_Pin|LD3_Pin|LD5_Pin
+                          |LD7_Pin|LD9_Pin|LD10_Pin|LD8_Pin
+                          |LD6_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
