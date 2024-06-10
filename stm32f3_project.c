@@ -1,4 +1,4 @@
-// we will start with stm32f3 blink led
+// we will start with stm32f3
 
 
 /* USER CODE BEGIN Header */
