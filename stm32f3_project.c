@@ -1,4 +1,5 @@
 // we will start with stm32f3
+// This is the fist ste done
 
 /* USER CODE BEGIN Header */
 /**
